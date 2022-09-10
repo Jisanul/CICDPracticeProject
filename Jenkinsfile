@@ -18,7 +18,7 @@ pipeline {
          }
         stage('Publish'){
              steps{
-               sh 'dotnet publish CICDPracticeProject/CICDPracticeProject.csproj --configuration Release --no-restore'
+               sh 'dotnet publish CICDPracticeProject.csproj --configuration Release --no-restore'
              }
         }
         stage('Deploy'){

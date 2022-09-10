@@ -26,8 +26,8 @@ pipeline {
                sh '''for pid in $(lsof -t -i:9090); do
                        kill -9 $pid
                done'''
-               sh 'cd WebApplication/bin/Release/netcoreapp6/publish/'
-               sh 'nohup dotnet WebApplication.dll --urls="http://aspcore.local:8092" --ip="127.0.0.1" --port=8092 --no-restore > /dev/null 2>&1 &'
+               sh 'cd bin/Release/net6.0/publish/'
+               sh 'nohup dotnet CICDPracticeProject.dll --urls="http://aspcore.local:8092" --ip="127.0.0.1" --port=8092 --no-restore > /dev/null 2>&1 &'
              }
         }
     }

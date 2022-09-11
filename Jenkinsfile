@@ -86,8 +86,7 @@ def docker_run(){
 def createContainer(){
     sh('echo \'{ "Image": "netcoreapp:' + VERSION_NUMBER + '", "ExposedPorts": { "5000/tcp" : {} }, "HostConfig": { "PortBindings": { "5000/tcp": [{ "HostPort": "5000" }] } } }\' > imageconf');
 
-    def payload = sh(\'{ "Image": "netcoreapp:' + VERSION_NUMBER + '", "ExposedPorts": { "5000/tcp" : {} }, "HostConfig": { "PortBindings": { "5000/tcp": [{ "HostPort": "5000" }] } } }\');
-    def createResponse = dockerApiRequest('containers/create', 'POST', 'json', 'json', payload);
+    def createResponse = dockerApiRequest('containers/create', 'POST', 'json', 'json', { "Image": "netcoreapp:8", "ExposedPorts": { "5000/tcp" : {} }, "HostConfig": { "PortBindings": { "5000/tcp": [{ "HostPort": "5000" }] } } });
     def containerId = createResponse.Id;
 
     return containerId;

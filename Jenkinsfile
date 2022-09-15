@@ -113,7 +113,7 @@ def getVersionNumber() {
 }
 
 def dockerApiRequest(request, method, contenttype = 'json', accept = '', data = '', isDataBinary = false){
-    def requestBuilder = 'curl -v -X ' + method + ' --unix-socket /var/run/docker.sock "http://app.livinghub.tech:2375/' + request + '"';
+    def requestBuilder = 'curl -v -X ' + method + ' "http://app.livinghub.tech:2375/' + request + '"';
 
     if(contenttype == 'json'){
         requestBuilder += ' -H "Content-Type:application/json"';
